@@ -1,0 +1,28 @@
+﻿@using SlitherlinkWeb.Models
+@model SlitherLinkModel
+
+@{
+    ViewData["Title"] = "Slitherlink";
+}
+<h1> SlitherLink Game </h1>
+<a href="SlitherLink/Index"> New Game </a>
+<br />
+
+Solved: @(Model.Field.isSolved())
+<br />
+Message: @(Model.Message)
+<br />
+Scores:
+<br />
+<ol>
+    @foreach (var score in Model.Scores)
+    {
+        <li> @(score.Player) @(score.score) </li>
+    }
+</ol>
+
+<table class = "field">
+
+
+    
+</table>
