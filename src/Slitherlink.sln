@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Slitherlink", "Slitherlink\Slitherlink.csproj", "{B7C8F13C-3541-4908-8E63-7BA58D59F9E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlitherlinkWeb", "SlitherlinkWeb\SlitherlinkWeb.csproj", "{2BCFA25F-A51B-427E-A401-1A2D4BD1C2D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlitherlinkWeb", "SlitherlinkWeb\SlitherlinkWeb.csproj", "{2BCFA25F-A51B-427E-A401-1A2D4BD1C2D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

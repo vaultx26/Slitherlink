@@ -17,11 +17,13 @@ namespace Slitherlink.SlitherlinkConsole
         private readonly HodnotenieService hodnotenieService = new HodnotenieServiceEF();
         private readonly CommentService commentService = new CommentServiceEF();
         private HodnotenieGame hodnotenieGame = new HodnotenieGame();
+        private CommentGame commentGame = new CommentGame();
         public ConsoleUI(Field field , GameSourse game)
         {   
             _field = field;
             _game = game;
             _field.initializeField();
+            _field.initSolvedField();
         }
         public void printField()
         {
@@ -46,7 +48,6 @@ namespace Slitherlink.SlitherlinkConsole
             Console.WriteLine("\t*The value of each clue equals the number of links surrounding it\n");
             Console.WriteLine("\t*Empty squares may be surrounded by any number of links\n");
             Console.WriteLine("\t*When completed, the solution forms a single continuous loop with no crossings or branches\n");
-            Console.WriteLine("\n\t\t\tPress any button");
             Console.ReadKey();
         }
         public void Menu()
@@ -63,27 +64,14 @@ namespace Slitherlink.SlitherlinkConsole
                 case "play":
                     printField();
                     do
-                    { 
-                        string what_to_do = Console.ReadLine();
-                        int x = int.Parse(Console.ReadLine());
-                        int y = int.Parse(Console.ReadLine());
-                        string typ;
-                        if (what_to_do == "place")
-                        {
-                            typ = Console.ReadLine();
-                        }
-                        else
-                        {
-                            typ = "remove";
-                        }
-                        _game.action(what_to_do, x, y, typ);
-
-                        Console.Clear();
+                    {
+                        _field.PlayGame();
                         printField();
                     } while (!_field.isSolved());
                     scoreService.addScore(new Score { Player = Environment.UserName, score = _field.getScore(), DateTime = DateTime.Now });
                     Console.WriteLine("Time " + _field.getScore() + " seconds\n");
                     Console.WriteLine("Teraz si môžeš zadať komentár a ohodnotiť hru od 1 po 5\n");
+                    commentGame.Comment();
                     hodnotenieGame.Rate();
 
                     Console.WriteLine("Game over! Press any button");

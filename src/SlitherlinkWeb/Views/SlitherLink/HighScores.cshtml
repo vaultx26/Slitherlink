@@ -1,0 +1,21 @@
+﻿@using SlitherlinkWeb.Models
+@using Slitherlink.SlitherlinkCore
+@model SlitherLinkModel
+@{
+    ViewData["Title"] = "High Scores";
+}
+<h2>Scores</h2>
+<ol> 
+    @foreach (var score in Model.Scores)
+    {
+        <li>
+            @score.Player: @score.score
+        </li>
+    }
+</ol>
+
+<form action ="/SlitherLink/SaveScore" method = "post">
+    Player : <input type="text" name="Player" /> <br />
+    Score : <input type="text" name="points" /> <br />
+    <input type="submit"/> <br />
+</form>

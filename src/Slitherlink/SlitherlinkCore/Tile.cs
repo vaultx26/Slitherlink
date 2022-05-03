@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Slitherlink.SlitherlinkCore
 {
+    [Serializable]
     public class Tile
     {   
         public Tile(char character)

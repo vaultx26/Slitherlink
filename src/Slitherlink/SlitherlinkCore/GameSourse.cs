@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Slitherlink.SlitherlinkCore
 {
+    [Serializable]
     public class GameSourse
     {
         private Field field;
-        private Tile _tile;
         public GameSourse(Field field)
         {
             this.field = field;
@@ -28,7 +28,7 @@ namespace Slitherlink.SlitherlinkCore
                 default:
                     break;
             }
-        }
+        }      
         public void place(int x , int y , string type)
         { 
             switch(type)

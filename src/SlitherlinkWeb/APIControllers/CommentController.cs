@@ -6,7 +6,7 @@ namespace SlitherlinkWeb.APIControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CommentScore : Controller
+    public class CommentController : Controller
     {
         private readonly CommentService _commentService = new CommentServiceEF();
         [HttpGet]

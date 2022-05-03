@@ -1,0 +1,92 @@
+﻿@using SlitherlinkWeb.Models
+@using Slitherlink.SlitherlinkCore
+@model SlitherLinkModel
+
+@{
+    Model.Field.initSolvedField();
+    Model.Field.initializeField();
+}
+@{
+    ViewData["Title"] = "SlitherLinkGame";
+}
+<h1> SlitherLink Game </h1>
+
+<a href="/SlitherLink/SlitherLinkGame"> New Game </a>
+
+<br />
+Time when you start: @(DateTime.Now.ToString("HH:mm:ss"))
+<br />
+Solved: @Model.Field.isSolved()
+
+<table>
+    @for (var row = 0 ; row < Model.Field.RowCount ; row++)
+    {
+        
+        <tr>
+            @for (var col = 0; col < Model.Field.ColumnCount; col++)
+            {
+                
+                Tile tile = Model.Field._tiles[row, col];
+                if(tile.Character == ' ')
+                {
+                    <td>
+                        <a href = "/SlitherLink/SlitherLinkGame/PlayGame?tile=@(tile.Character)">
+                            <img src = "/images/pusto-01.jpg" />    
+                        </a>
+                    </td>
+                } else if(tile.Character == '*')
+                {
+                    <td>
+                        <a href = "/SlitherLink/SlitherLinkGame/PlayGame?tile@(tile.Character)">
+                            <img src = "/images/ziro4ka-01.jpg" />    
+                        </a>
+                    </td>
+                } else if(tile.Character == '0')
+                {
+                    <td>
+                        <a href = "/SlitherLink/SlitherLinkGame/PlayGame?tile@(tile.Character)">
+                            <img src = "/images/nula-01.jpg" />    
+                        </a>
+                    </td>
+                } else if(tile.Character == '1')
+                {
+                    <td>
+                        <a href = "/SlitherLink/SlitherLinkGame/PlayGame?tile@(tile.Character)">
+                            <img src = "/images/jednotka-01.jpg" />    
+                        </a>
+                    </td>
+                } else if(tile.Character == '2')
+                {
+                    <td>
+                        <a href = "/SlitherLink/SlitherLinkGame/PlayGame?tile@(tile.Character)">
+                            <img src = "/images/dvojka-01.jpg" />    
+                        </a>
+                    </td>
+                } else if(tile.Character == '3')
+                {
+                    <td>
+                        <a href = "/SlitherLink/SlitherLinkGame/PlayGame?tile@(tile.Character)">
+                            <img src = "/images/trojka-01.jpg" />    
+                        </a>
+                    </td>
+                } else if(tile.Character == '-')
+                {
+                    <td>
+                        <a href = "/SlitherLink/SlitherLinkGame/PlayGame?tile@(tile.Character)">
+                            <img src = "/images/Untitled-1-02.jpg" />    
+                        </a>
+                    </td>
+                } else if(tile.Character == '|')
+                {
+                    <td>
+                        <a href = "/SlitherLink/SlitherLinkGame/PlayGame?tile@(tile.Character)">
+                            <img src = "/images/Untitled-1-01.jpg" />    
+                        </a>
+                    </td>
+                }
+            }
+        </tr>
+    }
+</table>
+
+<br />
