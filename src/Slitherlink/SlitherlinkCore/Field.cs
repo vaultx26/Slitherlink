@@ -10,11 +10,11 @@ namespace Slitherlink.SlitherlinkCore
     [Serializable]
     public class Field
     {
-        private DateTime _date;
+        public DateTime _date;
         private GameSourse gameSourse;
         public Tile[,] _tiles;
         public Tile[,] tiles;
-        char[,] solved_easy =
+        public char[,] solved_easy =
             {
                 { '*' , '-' , '-' , '-' , '*' , ' ' , '*' , '-' , '-' , '-' ,  '*' },
                 { '|' , ' ' , ' ' , ' ' , '|' , '2' , '|' , '2' , ' ' , '3' ,  '|' },
@@ -42,7 +42,7 @@ namespace Slitherlink.SlitherlinkCore
                 { ' ' , ' ' , ' ' , '1' , ' ' , '3' , ' ' , ' ' , ' ' , ' ' ,  ' ' },
                 { '*' , ' ' , ' ' , ' ' , ' ' , ' ' , '*' , ' ' , '*' , ' ' ,  '*' }
             };*/
-        char[,] easy =
+        public char[,] easy =
             {
                 { '*' , ' ' , '-' , '-' , '*' , ' ' , '*' , '-' , '-' , '-' ,  '*' },
                 { '|' , ' ' , ' ' , ' ' , '|' , '2' , '|' , '2' , ' ' , '3' ,  '|' },
@@ -66,6 +66,8 @@ namespace Slitherlink.SlitherlinkCore
             tiles = new Tile[rowCount, columnCount];
             _date = DateTime.Now;
             gameSourse = new GameSourse(this);
+            initializeField();
+            initSolvedField();
         }
         public Tile GetTile(int row, int column)
         {

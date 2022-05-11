@@ -4,6 +4,29 @@
 @{
     ViewData["Title"] = "High Scores";
 }
+<head>
+    <style>
+ol li
+{
+    list-style-type: none;
+    padding: 7px 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-left: 10px solid #008000; 
+    box-shadow: 2px -2px 5px 0 rgba(0,0,0,.1),
+         -2px -2px 5px 0 rgba(0,0,0,.1),
+        2px 2px 5px 0 rgba(0,0,0,.1),
+        -2px 2px 5px 0 rgba(0,0,0,.1);
+    font-size: 18px;
+    transition: 0.3s all linear;
+}
+    </style>
+    
+</head>
+<h2>
+    <a href="@Url.Action("Index", "Home")">Back to game</a>
+</h2>
+<br />
 <h2>Scores</h2>
 <ol> 
     @foreach (var score in Model.Scores)
@@ -13,9 +36,24 @@
         </li>
     }
 </ol>
+<br />
+<h2>Comments</h2>
+<ol>
+    @foreach (var comment in Model.Comment)
+    {
+        <li>
+            @comment.Author: @comment.Content
+        </li>
+    }
+</ol>
+<br />
+<h2>Hodnotenie</h2>
+<ol>
+    @foreach (var rating in Model.Hodnotenies)
+    {
+        <li>
+            @rating.Meno: @rating.stars
+        </li>
+    }
 
-<form action ="/SlitherLink/SaveScore" method = "post">
-    Player : <input type="text" name="Player" /> <br />
-    Score : <input type="text" name="points" /> <br />
-    <input type="submit"/> <br />
-</form>
+</ol>

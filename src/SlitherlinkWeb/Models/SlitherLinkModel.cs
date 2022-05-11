@@ -8,8 +8,8 @@ namespace SlitherlinkWeb.Models
     public class SlitherLinkModel
     {
         public Field Field { get; set; }
-        public string Player { get; set; }
         public IList<Score> Scores { get; set; }
-        
+        public IList<Comment> Comment { get; set; }
+        public IList<Hodnotenie> Hodnotenies { get; set; }
     }
 }

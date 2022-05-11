@@ -1,31 +1,84 @@
 ﻿@using SlitherlinkWeb.Models
 @using Slitherlink.SlitherlinkCore
 @model SlitherLinkModel
-
-@{
-    Model.Field.initSolvedField();
-    Model.Field.initializeField();
-}
 @{
     ViewData["Title"] = "SlitherLinkGame";
 }
-<h1> SlitherLink Game </h1>
+<head>
+<style>
+        .flex {
+            display: flex;
+        }
+        h1{
+            color: green;
+            text-align: center;   
+        }
+        table {
+            border: 1px solid green;
+            background-color: #f2f2f2;
+            margin-left : 250px;
+        }
+        form {
+            margin-top : 150px
+        }
+        input[type="text"],input[type="number"]{
+            width: 300px;
+            height:50px;
+            font-size: 18px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+            padding-left: 10px;
+        }    
+        input[type="submit"] {
+            padding: 13px 30px;
+            margin: 5px 0 20px 0;
+            font-size: 15px;
+            color: #fff;
+            background-color: #008000;
+            border: none;
+            border-bottom: 4px solid #00FF00;
+            cursor: pointer;
+        }
+        .time {
+            width: 300px;
+            height:50px;
+            font-size: 18px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<div>
+    <h1> SlitherLink Game </h1>
+</div>
+<div class="time">
+    Time : @Model.Field._date.ToString("HH:mm:ss")
+</div>
+@{
+    if (Model.Field.isSolved())
+    {
+        <h2> You solved the game! </h2>
+        <form action = "/SlitherLink/Ending">
+            <input type = "submit" value = "End Game"/>
+        </form>
+    }
+}
 
-<a href="/SlitherLink/SlitherLinkGame"> New Game </a>
-
-<br />
-Time when you start: @(DateTime.Now.ToString("HH:mm:ss"))
-<br />
-Solved: @Model.Field.isSolved()
-
+<div class="flex">
+<form action = "/SlitherLink/Game/" method = "post">
+    What to do : <input type = "text" name = "action" /> <br />
+    Type : <input type = "text" name = "type" /> <br />
+    X position : <input type = "number" name = "x" /> <br />
+    Y position : <input type = "number" name = "y" /> <br />
+    <input type = "submit" value = "Send"/> <br />
+</form>
 <table>
     @for (var row = 0 ; row < Model.Field.RowCount ; row++)
     {
-        
         <tr>
             @for (var col = 0; col < Model.Field.ColumnCount; col++)
             {
-                
                 Tile tile = Model.Field._tiles[row, col];
                 if(tile.Character == ' ')
                 {
@@ -39,6 +92,7 @@ Solved: @Model.Field.isSolved()
                     <td>
                         <a href = "/SlitherLink/SlitherLinkGame/PlayGame?tile@(tile.Character)">
                             <img src = "/images/ziro4ka-01.jpg" />    
+                            
                         </a>
                     </td>
                 } else if(tile.Character == '0')
@@ -87,6 +141,5 @@ Solved: @Model.Field.isSolved()
             }
         </tr>
     }
-</table>
-
-<br />
+</table> 
+</div>

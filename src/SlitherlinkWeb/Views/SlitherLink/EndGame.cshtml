@@ -1,0 +1,41 @@
+﻿@using SlitherlinkWeb.Models
+@using Slitherlink.SlitherlinkCore
+@model SlitherLinkModel
+
+@{
+    ViewData["Title"] = "End Game";
+}
+<head>
+    <style>
+        input[type="text"]{
+            width: 300px;
+            height:50px;
+            font-size: 18px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+            padding-left: 10px;
+        }
+        input[type="submit"] {
+             padding: 13px 30px;
+             margin: 5px 0 20px 0;
+             font-size: 15px;
+             color: #fff;
+             background-color: #008000;
+             border: none;
+             border-bottom: 4px solid #00FF00;
+             cursor: pointer;
+        }
+        form {
+            width:450px;
+            height: 100px;
+            margin: 250px auto 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<form action ="/SlitherLink/SaveScore" method = "post">
+    Player : <input type="text" name="Player" /> <br />
+    Comment : <input type="text" name="Comment" /> <br />
+    Hodnotenie : <input type="text" name="Rating" /> <br />
+    <input type="submit" value = "Send"/> <br />
+</form>

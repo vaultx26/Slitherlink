@@ -33,10 +33,10 @@ namespace Slitherlink.SlitherlinkCore
         { 
             switch(type)
             {
-                case "vertical":
+                case "vert":
                     field._tiles[x, y] = new Tile('|');
                     break;
-                case "horizontal":
+                case "hor":
                     field._tiles[x, y] = new Tile('-');
                     break;
                 default:
